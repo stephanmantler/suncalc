@@ -16,6 +16,12 @@ and [the planets](http://aa.quae.nl/en/reken/hemelpositie.html).
 You can read about different twilight phases calculated by SunCalc
 in the [Twilight article on Wikipedia](http://en.wikipedia.org/wiki/Twilight).
 
+#### 2020 FORK UPDATE:
+
+Previously if you wanted to get the sunset in London and you lived in LA, the result would be the datetime in LA that sunset is in London. In this fork that has been switched to instead should the datetime as if you are in London.
+
+To accomplish this the "Intl" standard library is used in conjunction with code borrowed from the tzLookup project. Support is dependendent on support for the "Intl" library which is [at 96% for modern usage](https://caniuse.com/?search=Intl.DateTimeFormat) but serverside and embedded should double check this.
+
 
 ## Usage example
 
