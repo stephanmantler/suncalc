@@ -1,5 +1,5 @@
 {
-  "name": "suncalc",
+  "name": "suncalc-tz",
   "version": "1.9.0",
   "description": "A tiny JavaScript library for calculating sun/moon positions and phases.",
   "homepage": "https://github.com/christopher-hayes/suncalc",
