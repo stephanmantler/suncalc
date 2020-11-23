@@ -163,6 +163,10 @@ If `inUTC` is set to true, it will instead search the specified date from 0 to 2
 
 ## Changelog
 
+#### 1.9.0 &mdash; Nov 23, 2020
+
+- Now converts dates to the timezone of the passed in location.
+
 #### 1.8.0 &mdash; Dec 22, 2016
 
 - Improved precision of moonrise/moonset calculations.
