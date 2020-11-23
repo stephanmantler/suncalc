@@ -1,8 +1,8 @@
 {
   "name": "suncalc",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "A tiny JavaScript library for calculating sun/moon positions and phases.",
-  "homepage": "https://github.com/mourner/suncalc",
+  "homepage": "https://github.com/christopher-hayes/suncalc",
   "keywords": [
     "sun",
     "astronomy",
@@ -14,10 +14,10 @@
     "moon",
     "illumination"
   ],
-  "author": "Vladimir Agafonkin",
+  "author": "Chris Hayes",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mourner/suncalc.git"
+    "url": "git://github.com/christopher-hayes/suncalc.git"
   },
   "main": "suncalc.js",
   "devDependencies": {
