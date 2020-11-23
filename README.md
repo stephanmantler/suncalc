@@ -18,9 +18,9 @@ in the [Twilight article on Wikipedia](http://en.wikipedia.org/wiki/Twilight).
 
 #### 2020 FORK UPDATE:
 
-Previously if you wanted to get the sunset in London and you lived in LA, the result would be the datetime in LA that sunset is in London. In this fork that has been switched to instead should the datetime as if you are in London.
+Previously, if you lived in LA and wanted to know what time sunset is in London, you would get the sunset in LA time. This means whatever device runs this code will show time in its local timezone. This fork instead returns the datetime in the timezone of the location that was passed in. So, if you ask for sunset in London you'll get 17:00 instead of 11:00.
 
-To accomplish this the "Intl" standard library is used in conjunction with code borrowed from the tzLookup project. Support is dependendent on support for the "Intl" library which is [at 96% for modern usage](https://caniuse.com/?search=Intl.DateTimeFormat) but serverside and embedded should double check this.
+To accomplish this the "Intl" standard library is used in conjunction with code borrowed from the tzLookup project. Support is dependendent on support for the "Intl" library which is [at 96% for regular users](https://caniuse.com/?search=Intl.DateTimeFormat) but serverside and embedded should double check this.
 
 To install with NPM use `suncalc-tz` instead of `suncalc` to download this fork.
 
