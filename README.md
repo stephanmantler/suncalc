@@ -1,5 +1,5 @@
 
-SunCalc
+SunCalc (suncalc-tz)
 =======
 
 [![Build Status](https://travis-ci.org/mourner/suncalc.svg?branch=master)](https://travis-ci.org/mourner/suncalc)
@@ -22,6 +22,8 @@ Previously if you wanted to get the sunset in London and you lived in LA, the re
 
 To accomplish this the "Intl" standard library is used in conjunction with code borrowed from the tzLookup project. Support is dependendent on support for the "Intl" library which is [at 96% for modern usage](https://caniuse.com/?search=Intl.DateTimeFormat) but serverside and embedded should double check this.
 
+To install with NPM use `suncalc-tz` instead of `suncalc` to download this fork.
+
 
 ## Usage example
 
@@ -42,11 +44,11 @@ var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
 SunCalc is also available as an NPM package:
 
 ```bash
-$ npm install suncalc
+$ npm install suncalc-tz
 ```
 
 ```js
-var SunCalc = require('suncalc');
+var SunCalc = require('suncalc-tz');
 ```
 
 
