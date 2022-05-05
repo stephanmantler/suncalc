@@ -29,17 +29,13 @@ To install with NPM use `suncalc-tz` instead of `suncalc` to download this fork.
 
 ```javascript
 // get today's sunlight times for London
-var times = SunCalc.getTimes(new Date(), 51.5, -0.1);
-
+var times = SunCalc.getTimes(new Date(), 51.5, -0.1)
 // format sunrise time from the Date object
-var sunriseStr = times.sunrise.getHours() + ':' + times.sunrise.getMinutes();
-
+var sunriseStr = times.sunrise.getHours() + ':' + times.sunrise.getMinutes()
 // get position of the sun (azimuth and altitude) at today's sunrise
-var sunrisePos = SunCalc.getPosition(times.sunrise, 51.5, -0.1);
-
+var sunrisePos = SunCalc.getPosition(times.sunrise, 51.5, -0.1)
 // get sunrise azimuth in degrees
-var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
-```
+var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI```
 
 SunCalc is also available as an NPM package:
 
@@ -48,8 +44,7 @@ $ npm install suncalc-tz
 ```
 
 ```js
-var SunCalc = require('suncalc-tz');
-```
+var SunCalc = require('suncalc-tz')```
 
 
 ## Reference
@@ -126,8 +121,7 @@ Returns an object with the following properties:
 
  * `fraction`: illuminated fraction of the moon; varies from `0.0` (new moon) to `1.0` (full moon)
  * `phase`: moon phase; varies from `0.0` to `1.0`, described below
- * `angle`: midpoint angle in radians of the illuminated limb of the moon reckoned eastward from the north point of the disk;
- the moon is waxing if the angle is negative, and waning if positive
+ * `angle`: midpoint angle in radians of the illuminated limb of the moon reckoned eastward from the north point of the disk the moon is waxing if the angle is negative, and waning if positive
 
 Moon phase value should be interpreted like this:
 

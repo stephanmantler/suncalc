@@ -1,6 +1,7 @@
 {
   "name": "suncalc-tz",
   "version": "1.9.1",
+  "type": "module",
   "description": "A tiny JavaScript library for calculating sun/moon positions and phases.",
   "homepage": "https://github.com/christopher-hayes/suncalc",
   "keywords": [
@@ -23,7 +24,7 @@
   "devDependencies": {
     "eslint": "^8.8.0",
     "eslint-config-mourner": "^2.0.1",
-    "tape": "^5.5.0"
+    "tape": "^5.5.3"
   },
   "eslintConfig": {
     "extends": "mourner",
