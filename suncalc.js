@@ -188,7 +188,16 @@ SunCalc.getTimes = function (date, lat, lng, height) {
   // Convert dates to the time at lat/lng
   for (let time in result) {
     const options = {timeZone: tz, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
-    result[time] = new Date(Date.parse(new Intl.DateTimeFormat('en', options).format(result[time])));
+    try {
+      const newTime = new Date(Date.parse(new Intl.DateTimeFormat('en', options).format(result[time])));
+      if (isNaN(newTime)) {
+        throw new Exception(`New time "${newTime}" is invalid. Old time: "${time}". DateTimeFormat options: ${JSON.stringify(options)}`);
+      } else {
+        result[time] = newTime;
+      }
+    } catch (e) {
+      console.error(`ERROR: Failed to convert time "${time}" at timezone "${tz}"`, e); 
+    }
   }
 
   return result;
