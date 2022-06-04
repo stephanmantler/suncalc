@@ -161,13 +161,20 @@ SunCalc.getTimes = function (date, lat, lng, height) {
     time = times[i]
     h0 = (time[0] + dh) * rad        
     Jset = getSetJ(h0, lw, phi, dec, n, M, L)
-    Jrise = Jnoon - (Jset - Jnoon)        
+    Jrise = Jnoon - (Jset - Jnoon)
+
     result[time[1]] = fromJulian(Jrise)
     result[time[2]] = fromJulian(Jset)
   }
   
   // Convert dates to the time at lat/lng
   for (let time in result) {
+
+    // don't try to convert results that are NaN
+    if (isNaN(result[time])) {
+      continue
+    }
+
     const options = {timeZone: tz, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'}
     try {
       const newTime = new Date(Date.parse(new Intl.DateTimeFormat('en', options).format(result[time])))
