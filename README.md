@@ -16,7 +16,7 @@ and [the planets](http://aa.quae.nl/en/reken/hemelpositie.html).
 You can read about different twilight phases calculated by SunCalc
 in the [Twilight article on Wikipedia](http://en.wikipedia.org/wiki/Twilight).
 
-#### 2020 FORK UPDATE:
+### 2020 FORK UPDATE:
 
 Previously, if you lived in LA and wanted to know what time sunset is in London, you would get the sunset in LA time. This means whatever device runs this code will show time in its local timezone. This fork instead returns the datetime in the timezone of the location that was passed in. So, if you ask for sunset in London you'll get 17:00 instead of 11:00.
 
@@ -24,6 +24,11 @@ To accomplish this the "Intl" standard library is used in conjunction with code 
 
 To install with NPM use `suncalc-tz` instead of `suncalc` to download this fork.
 
+### 2022 WIP Updates
+
+I've commited some work on fixing issues mentioned by others and using the latest JS practices. But, I'm starting to feel a little conflicted about whether this fork is a "hack" that uses the wrong apporach to solve a datetime issue.
+
+At this point, if you want a stable version of this package, use what's on NPM (`npm i suncalc-tz`), if you want to use the latest version of this repo, reference this repo directly in your package.json or build the repo locally. I don't have a ton of time to maintain this fork if the latest code breaks someone's project, so that's why I haven't published any of the latest changes to NPM.
 
 ## Usage example
 
