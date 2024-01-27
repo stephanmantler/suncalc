@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./build",
+    "declaration": true,
     "allowJs": true,
     "target": "esnext",
     "moduleResolution": "node"

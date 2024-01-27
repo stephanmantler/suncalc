@@ -1,8 +1,8 @@
 {
   "name": "suncalc-luxon",
-  "version": "1.9.1",
+  "version": "1.0.0",
   "type": "module",
-  "description": "A tiny JavaScript library for calculating sun/moon positions and phases, integrated with Luxon for time zone support.",
+  "description": "A tiny TypeScript library for calculating sun/moon positions and phases, integrated with Luxon for time zone support. Originally created by  Vladimir Agafonkin (@mourner).",
   "homepage": "https://github.com/stephanmantler/suncalc",
   "keywords": [
     "sun",
@@ -41,12 +41,15 @@
       "amd": true
     }
   },
+  "main": "build/suncalc.js",
   "files": [
-    "suncalc.js"
+    "src/*",
+    "build/*js"
   ],
   "scripts": {
     "pretest": "eslint src/suncalc.ts test.js",
     "test": "node test.js",
+    "build": "tsc",
     "prepublishOnly": "npm test"
   },
   "jshintConfig": {

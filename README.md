@@ -1,5 +1,5 @@
 
-SunCalc (suncalc-tz)
+SunCalc (suncalc-luxon)
 =======
 
 [![Build Status](https://travis-ci.org/mourner/suncalc.svg?branch=master)](https://travis-ci.org/mourner/suncalc)
@@ -15,6 +15,10 @@ about [position of the sun](http://aa.quae.nl/en/reken/zonpositie.html)
 and [the planets](http://aa.quae.nl/en/reken/hemelpositie.html).
 You can read about different twilight phases calculated by SunCalc
 in the [Twilight article on Wikipedia](http://en.wikipedia.org/wiki/Twilight).
+
+## The information below is no longer entirely accurate, but included for reference.
+
+It will be updated soon (I hope).
 
 ### 2020 FORK UPDATE:
 
@@ -45,11 +49,11 @@ var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI```
 SunCalc is also available as an NPM package:
 
 ```bash
-$ npm install suncalc-tz
+$ npm install suncalc-luxon
 ```
 
 ```js
-var SunCalc = require('suncalc-tz')```
+var SunCalc = require('suncalc-luxon')```
 
 
 ## Reference
