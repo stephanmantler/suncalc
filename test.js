@@ -1,4 +1,5 @@
-import SunCalc from './suncalc.js'
+import SunCalc from './build/suncalc.js'
+import { DateTime } from 'luxon'
 const Tape = await import('tape')
 
 function near(val1, val2, margin) {
@@ -42,7 +43,7 @@ Tape.test('getPosition returns azimuth and altitude for the given time and locat
 Tape.test('getTimes returns sun phases for the given date and location', function (t) {
     var times = SunCalc.getTimes(date, lat, lng)
     for (var i in testTimes) {
-        t.equal(new Date(testTimes[i]).toUTCString(), times[i].toUTCString(), i)
+        t.equal(times[i].toUTC().set({milliseconds: 0}).toISO(), DateTime.fromISO(testTimes[i]).toUTC().toISO(), i)
     }
     t.end()
 })
@@ -50,7 +51,7 @@ Tape.test('getTimes returns sun phases for the given date and location', functio
 Tape.test('getTimes adjusts sun phases when additionally given the observer height', function (t) {
     var times = SunCalc.getTimes(date, lat, lng, height)
     for (var i in heightTestTimes) {
-        t.equal(new Date(heightTestTimes[i]).toUTCString(), times[i].toUTCString(), i)
+        t.equal(times[i].toUTC().set({milliseconds: 0}).toISO(), DateTime.fromISO(heightTestTimes[i]).toUTC().toISO(), i)
     }
     t.end()
 })
@@ -72,8 +73,8 @@ Tape.test('getMoonIllumination returns fraction and angle of moon\'s illuminated
 })
 
 Tape.test('getMoonTimes returns moon rise and set times', function (t) {
-    var moonTimes = SunCalc.getMoonTimes(new Date('2013-03-04UTC'), lat, lng, true)
-    t.equal(moonTimes.rise.toUTCString(), 'Mon, 04 Mar 2013 23:54:29 GMT')
-    t.equal(moonTimes.set.toUTCString(), 'Mon, 04 Mar 2013 07:47:58 GMT')
+    var moonTimes = SunCalc.getMoonTimes(DateTime.utc(2013,3,4), lat, lng, true)
+    t.equal(moonTimes.rise.toUTC().set({milliseconds: 0}).toISO(), DateTime.fromHTTP('Mon, 04 Mar 2013 23:54:29 GMT').toUTC().toISO())
+    t.equal(moonTimes.set.toUTC().set({milliseconds: 0}).toISO(), DateTime.fromHTTP('Mon, 04 Mar 2013 07:47:58 GMT').toUTC().toISO())
     t.end()
 })
