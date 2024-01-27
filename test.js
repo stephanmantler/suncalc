@@ -32,6 +32,18 @@ const heightTestTimes = {
     sunrise: '2013-03-05T04:25:07Z',
     sunset: '2013-03-05T15:56:46Z'
 }
+const tzTestDate = new Date('2023-04-19UTC')
+const tzTestLocations = {
+    buenosaires: { lat: -36.30, lng: -60.00, offset: -3*60, sunrise: "07:28" },
+    canberra: { lat: -35.15, lng: 149.08, offset: 10*60, sunrise: "06:31" },
+    london: { lat: 51.36, lng: -0.05, offset: 1*60, sunrise: "06:00" },
+    newyork: { lat: 40.71, lng: -74, offset: -4*60, sunrise: "06:14" },
+    mogadishu: { lat: 2.02, lng: 45.25, offset: 3*60, sunrise: "05:54" },
+    moscow: { lat: 55.45, lng: 37.35, offset: 3*60, sunrise: "05:19" },
+    paris: { lat: 48.50, lng: 2.20, offset: 2*60, sunrise: "06:55" },
+    reykjavik: { lat: 64.10, lng: -21.57, offset: 0, sunrise: "05:46" },
+    tokyo: { lat: 35.68, lng: 139.65, offset: 9*60, sunrise: "05:05" }
+}
 
 Tape.test('getPosition returns azimuth and altitude for the given time and location', function (t) {
     var sunPos = SunCalc.getPosition(date, lat, lng)
@@ -56,6 +68,16 @@ Tape.test('getTimes adjusts sun phases when additionally given the observer heig
     t.end()
 })
 
+Tape.test('getTimes returns locally accurate times with correct time zones', function(t) {
+    for(var i in tzTestLocations) {
+        var l = tzTestLocations[i]
+        var times = SunCalc.getTimes(tzTestDate, l.lat, l.lng)
+        t.equal(times.sunrise.offset, l.offset, i)
+        t.equal(times.sunrise.toFormat("HH:mm"), l.sunrise, i)
+    }
+    t.end()
+})
+
 Tape.test('getMoonPosition returns moon position data given time and location', function (t) {
     var moonPos = SunCalc.getMoonPosition(date, lat, lng)
     t.ok(near(moonPos.azimuth, -0.9783999522438226), 'azimuth')
@@ -74,7 +96,13 @@ Tape.test('getMoonIllumination returns fraction and angle of moon\'s illuminated
 
 Tape.test('getMoonTimes returns moon rise and set times', function (t) {
     var moonTimes = SunCalc.getMoonTimes(DateTime.utc(2013,3,4), lat, lng, true)
-    t.equal(moonTimes.rise.toUTC().set({milliseconds: 0}).toISO(), DateTime.fromHTTP('Mon, 04 Mar 2013 23:54:29 GMT').toUTC().toISO())
-    t.equal(moonTimes.set.toUTC().set({milliseconds: 0}).toISO(), DateTime.fromHTTP('Mon, 04 Mar 2013 07:47:58 GMT').toUTC().toISO())
+    t.equal(
+        moonTimes.rise.toUTC().set({milliseconds: 0}).toISO(),
+        DateTime.fromHTTP('Mon, 04 Mar 2013 23:54:29 GMT').toUTC().toISO(),
+        "moonrise")
+    t.equal(
+        moonTimes.set.toUTC().set({milliseconds: 0}).toISO(),
+        DateTime.fromHTTP('Mon, 04 Mar 2013 07:47:58 GMT').toUTC().toISO(),
+        "moonset")
     t.end()
 })

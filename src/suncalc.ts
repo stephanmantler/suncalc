@@ -185,6 +185,7 @@ class SunCalc {
       Jset = getSetJ(h0, lw, phi, dec, n, M, L)
       Jrise = Jnoon - (Jset - Jnoon)
 
+      // result times are in UTC at this point.
       result[time[1]] = fromJulian(Jrise)
       result[time[2]] = fromJulian(Jset)
     }
@@ -199,6 +200,7 @@ class SunCalc {
 
       const options = {timeZone: tz, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'}
       try {
+        // shift from UTC to destination time zone
         const newTime = result[time].setZone(tz)
         if ( !newTime.isValid ) {
           throw new Error(`New time "${newTime}" is invalid. Old time: "${time}". DateTimeFormat options: ${JSON.stringify(options)}`)
